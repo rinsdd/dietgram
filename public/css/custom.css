@@ -1,0 +1,10 @@
+.jumbotron {
+    background-image: url("../storage/topimg.jpg");
+    background-size: cover;
+}
+
+footer{
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+    text-align: center;
+}
