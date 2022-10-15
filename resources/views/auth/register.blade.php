@@ -33,4 +33,6 @@
             {!! Form::close() !!}
         </div>
     </div>
+@extends('commons.footer')   
 @endsection
+  

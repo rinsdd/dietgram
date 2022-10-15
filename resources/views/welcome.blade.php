@@ -7,7 +7,7 @@
             <h1>美味しいダイエットご飯を見つけよう</h1>
             {{-- ユーザ登録ページへのリンク --}}
             {!! link_to_route('signup.get', '会員登録', [], ['class' => 'btn btn-lg btn-primary']) !!}
-            <button type="button" class="btn btn-secondary">ログイン</button>
+            {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-secondary']) !!}
         </div>
     </div>
     <div class="center jumbotron-fluid">
