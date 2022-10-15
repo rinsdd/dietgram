@@ -5,7 +5,8 @@
         <div class="box">
         <div class="thumbnail text-center">
             <h1>美味しいダイエットご飯を見つけよう</h1>
-            <button type="button" class="btn btn-primary">会員登録</button>
+            {{-- ユーザ登録ページへのリンク --}}
+            {!! link_to_route('signup.get', '会員登録', [], ['class' => 'btn btn-lg btn-primary']) !!}
             <button type="button" class="btn btn-secondary">ログイン</button>
         </div>
     </div>
