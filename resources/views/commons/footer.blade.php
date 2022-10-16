@@ -1,3 +1,5 @@
 <footer>
-      <p>(c)2022/dietgram</p>
+      <div class="copyright">
+          Copyright &copy; <?php echo date('Y'); echo '/dietgram'?>
+      </div>
 </footer>

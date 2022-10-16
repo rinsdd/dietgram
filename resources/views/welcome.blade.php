@@ -10,15 +10,15 @@
             {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-secondary']) !!}
         </div>
     </div>
+    </div>
     <div class="center jumbotron-fluid">
         <div class="intro">
-            <p class="fs-3">.１、ダイエットご飯の写真を投稿する</p>
-            <p class="fs-3">.２、他のユーザーのダイエットご飯を見ましょう</p>
-            <p class="fs-3">.3、同じ料理に飽きてしまう時、他のユーザーの投稿からモチベーションを取り戻しましょう</p>
+            <p class="fs-3">1、ダイエットご飯の写真を投稿する</p>
+            <p class="fs-3">2、他のユーザーのダイエットご飯を見ましょう</p>
+            <p class="fs-3">3、同じ料理に飽きてしまう時、他のユーザーの投稿からモチベーションを取り戻しましょう</p>
         </div>
     </div>
-</div>
+@extends('commons.footer')
 @endsection        
         
-  @extends('commons.footer')      
 

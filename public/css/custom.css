@@ -1,6 +1,13 @@
 .jumbotron {
     background-image: url("../storage/topimg.jpg");
     background-size: cover;
+    padding: 50px;
+}
+
+.jumbotron-fluid {
+    background-color: #C0C0C0;
+    text-align: center;
+    padding: 20px;
 }
 
 footer{
