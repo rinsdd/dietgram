@@ -44,7 +44,7 @@ class User extends Authenticatable
     
     public function loadRelationshipCounts()
     {
-        $this->loadCount('records', 'followings', 'followers');
+        $this->loadCount('records', 'followings', 'followers', 'bookmarks');
     }
     
     public function followings()
@@ -120,5 +120,61 @@ class User extends Authenticatable
         $userIds[] = $this->id;
         // それらのユーザが所有する投稿に絞り込む
         return Record::whereIn('user_id', $userIds);
+    }
+    
+    public function bookmarks()
+    {
+        return $this->belongsToMany(Record::class, 'bookmarks', 'user_id', 'record_id')->withTimestamps();
+    }
+    
+    public function bookmark_users()
+    {
+        return $this->belongsToMany(Record::class, 'bookmarks', 'record_id', 'user_id')->withTimestamps();
+    }
+    
+    public function bookmark($recordId)
+    {
+        
+        $exist = $this->is_bookmarks($recordId);
+        
+        //$its_me = $this->id == $userId;
+
+        if ($exist) {
+            return false;
+        } else {
+            
+            $this->bookmarks()->attach($recordId);
+            return true;
+        }
+    }
+    
+    public function unbookmark($recordId)
+    {
+        $exist = $this->is_bookmarks($recordId);
+        
+        //$its_me = $this->id == $recordId;
+
+        if ($exist) {
+            $this->bookmarks()->detach($recordId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function is_bookmarks($recordId)
+    {
+        
+        return $this->bookmarks()->where('record_id', $recordId)->exists();
+    }
+    
+    public function feed_bookmark_records()
+    {
+        
+        $recordIds = $this->bookmarks()->pluck('records.id')->toArray();
+        
+        $recordIds[] = $this->id;
+        
+        return Record::whereIn('records_id', $recordIds);
     }
 }

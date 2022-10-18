@@ -13,6 +13,7 @@
                     <div>
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($record->content)) !!}</p>
+                        @include('bookmarks.bookmark_button')
                     </div>
                     <div>
                         @if (Auth::id() == $record->user_id)

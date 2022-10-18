@@ -70,4 +70,19 @@ class UsersController extends Controller
             'users' => $followers,
         ]);
     }
+    
+    public function bookmarks($id)
+    {
+        
+        $user = User::findOrFail($id);
+
+        $user->loadRelationshipCounts();
+
+        $bookmarks = $user->bookmarks()->paginate(10);
+
+        return view('users.bookmarks', [
+            'user' => $user,
+            'records' => $bookmarks,
+        ]);
+    }
 }

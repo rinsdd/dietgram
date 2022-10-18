@@ -28,8 +28,15 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
+        Route::get('bookmarks', 'UsersController@bookmarks')->name('users.bookmarks');
     });
     
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    
+    Route::group(['prefix' => 'records/{id}'], function () {
+        Route::post('bookmark', 'BookmarksController@store')->name('bookmarks.bookmark');
+        Route::delete('unbookmark', 'BookmarksController@destroy')->name('bookmarks.unbookmark');
+    });
+    
     Route::resource('records', 'RecordsController', ['only' => ['store', 'destroy']]);
 });
