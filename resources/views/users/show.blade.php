@@ -14,6 +14,7 @@
                 @include('records.form')
             @endif
             {{-- 投稿一覧 --}}
+            <h2>今までのダイエットご飯</h2>
             @include('records.records')
 
         </div>

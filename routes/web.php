@@ -39,4 +39,10 @@ Route::group(['middleware' => ['auth']], function () {
     });
     
     Route::resource('records', 'RecordsController', ['only' => ['store', 'destroy']]);
+    
+    
+    //Route::resource('/upload', 'UploadController');
+    
+    //Route::get('/test/file_upload', [UploadController::class, "index"])->name('file_upload.index'); //
+    //Route::post('/test/file_upload/action', [UploadController::class, "action"])->name('file_upload.action'); //
 });

@@ -17,7 +17,7 @@ class CreateRecordsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->string('content');
-            //$table->string('image'); //image
+            $table->string('image_path')->nullable(); //image
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users');

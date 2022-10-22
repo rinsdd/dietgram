@@ -13,6 +13,10 @@
                     <div>
                         {{-- 投稿内容 --}}
                         <p class="mb-0">{!! nl2br(e($record->content)) !!}</p>
+                        @if ($record->image_path)
+                        {{--画像を表示 -->--}}
+                        <img src="{{ $record->image_path }}">
+                         @endif
                         @include('bookmarks.bookmark_button')
                     </div>
                     <div>

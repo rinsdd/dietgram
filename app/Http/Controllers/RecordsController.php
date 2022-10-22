@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Storage;
+use App\Record;
+
 class RecordsController extends Controller
 {
     //
@@ -27,16 +30,32 @@ class RecordsController extends Controller
         return view('welcome', $data);
     }
     
+    //public function add()
+  //{
+    //  return view('records.form');
+  //}
+    
     public function store(Request $request)
     {
         // バリデーション
         $request->validate([
             'content' => 'required|max:255',
+            'file' => 'required',
         ]);
+        //s3アップロード開始
+      $image = $request->file('image');
+      // バケットの`myprefix`フォルダへアップロード
+      $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+      // アップロードした画像のフルパスを取得
+      $image_path = Storage::disk('s3')->url($path);
+
+      
+      //return redirect('records/form');
 
         // 認証済みユーザ（閲覧者）の投稿として作成（リクエストされた値をもとに作成）
         $request->user()->records()->create([
             'content' => $request->content,
+            'image_path' => $image_path,
         ]);
 
         // 前のURLへリダイレクトさせる

@@ -1,17 +1,24 @@
 .jumbotron {
     background-image: url("../storage/topimg.jpg");
-    background-size: cover;
-    padding: 50px;
+    background-size: 900px;
+    padding: 150px;
+    font-weight: bold;
+    white-space: nowrap;
+    position:relative;
 }
 
 .jumbotron-fluid {
-    background-color: #C0C0C0;
+    background-image: url("../storage/food.jpg");
+    background-size:1500px;
     text-align: center;
     padding: 20px;
+    font-size: 20px;
+    position: relative;
 }
 
 footer{
-    position: absolute;/*←絶対位置*/
-    bottom: 0; /*下に固定*/
+    position: fixed; /* 固定 */
+    bottom: 0; /* 一番下に表示 */
+    width: 100%; /* 中央に表示 */
     text-align: center;
 }
